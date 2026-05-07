@@ -78,7 +78,7 @@ app/
 ## 1. Clone Repository
 
 ```bash
-git clone <your_repo_url>
+git clone https://github.com/vinupraneeth/fastapi-hospital-management.git
 ```
 
 ---
@@ -130,7 +130,7 @@ Create `.env` file:
 
 ```env
 DATABASE_URL=sqlite:///./hospital.db
-SECRET_KEY=your_secret_key
+SECRET_KEY=secret_key
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=30
 ```
