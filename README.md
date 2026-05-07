@@ -130,7 +130,7 @@ Create `.env` file:
 
 ```env
 DATABASE_URL=sqlite:///./hospital.db
-SECRET_KEY=mysecretkey123
+SECRET_KEY=your_secret_key
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=30
 ```
