@@ -96,7 +96,8 @@ def get_all_appointments(
 #GET by ID Fucntion
 def get_appointment_by_id(
     db: Session,
-    appointment_id: int
+    appointment_id: int,
+    user
 ):
     appointment = db.query(Appointment).filter(
         Appointment.id == appointment_id
@@ -107,6 +108,34 @@ def get_appointment_by_id(
             status_code=404,
             detail="Appointment not found"
         )
+
+    if user.role == "doctor":
+
+        doctor = db.query(Doctor).filter(
+            Doctor.email == user.email
+        ).first()
+
+        if not doctor or (
+            appointment.doctor_id != doctor.id
+        ):
+            raise HTTPException(
+                status_code=403,
+                detail="Access denied"
+            )
+
+    elif user.role == "patient":
+
+        patient = db.query(Patient).filter(
+            Patient.email == user.email
+        ).first()
+
+        if not patient or (
+            appointment.patient_id != patient.id
+        ):
+            raise HTTPException(
+                status_code=403,
+                detail="Access denied"
+            )
 
     return appointment
 

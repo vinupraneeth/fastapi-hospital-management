@@ -115,7 +115,8 @@ def get_all_prescriptions(
 #GET by ID
 def get_prescription_by_id(
     db: Session,
-    prescription_id: int
+    prescription_id: int,
+    user
 ):
     prescription = db.query(Prescription).filter(
         Prescription.id == prescription_id
@@ -126,6 +127,34 @@ def get_prescription_by_id(
             status_code=404,
             detail="Prescription not found"
         )
+
+    if user.role == "doctor":
+
+        doctor = db.query(Doctor).filter(
+            Doctor.email == user.email
+        ).first()
+
+        if not doctor or (
+            prescription.doctor_id != doctor.id
+        ):
+            raise HTTPException(
+                status_code=403,
+                detail="Access denied"
+            )
+
+    elif user.role == "patient":
+
+        patient = db.query(Patient).filter(
+            Patient.email == user.email
+        ).first()
+
+        if not patient or (
+            prescription.patient_id != patient.id
+        ):
+            raise HTTPException(
+                status_code=403,
+                detail="Access denied"
+            )
 
     return prescription
 

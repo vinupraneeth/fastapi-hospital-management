@@ -58,11 +58,13 @@ def get_appointments(
 )
 def get_appointment(
     appointment_id: int,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    user = Depends(get_current_user)
 ):
     return appointment_service.get_appointment_by_id(
         db,
-        appointment_id
+        appointment_id,
+        user
     )
 
 #Update Appoinment API

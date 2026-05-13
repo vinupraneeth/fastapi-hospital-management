@@ -62,9 +62,11 @@ def get_prescriptions(
 )
 def get_prescription(
     prescription_id: int,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    user = Depends(get_current_user)
 ):
     return prescription_service.get_prescription_by_id(
         db,
-        prescription_id
+        prescription_id,
+        user
     )
