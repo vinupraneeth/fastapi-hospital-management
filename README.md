@@ -261,10 +261,3 @@ is_active = False
 instead of permanently removing records from the database.
 
 ---
-
-# Notes
-
-- SQLite is used for local development
-- JWT authentication is implemented using python-jose
-- Password hashing is implemented using passlib and bcrypt
-- Pagination support is implemented for appointments
