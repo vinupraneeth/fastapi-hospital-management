@@ -223,8 +223,9 @@ uvicorn app.main:app --reload
 
 Open:
 
-[Link Text](http://127.0.0.1:8000/docs)
-
+```text
+http://127.0.0.1:8000/docs
+```
 
 ---
 
