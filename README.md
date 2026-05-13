@@ -16,7 +16,7 @@ The application includes JWT-based authentication, role-based authorization, app
 - Protected APIs
 - Role-based access control
 
-Supported roles:
+Roles:
 - Admin
 - Doctor
 - Patient
@@ -44,13 +44,12 @@ Supported roles:
 - View appointments
 - Update appointments
 - Cancel appointments
-- Pagination support
 
-Business validations:
-- Past appointments are not allowed
+Logic:
+- Past appointments are not allowed 
 - Doctors cannot have overlapping appointments
-- Appointment status validation
-- Cancelled appointments are excluded from overlap checks
+- Appointment status for validation
+- Cancelled appointments are excluded from overlapping check
 
 ---
 
@@ -59,7 +58,7 @@ Business validations:
 - List prescriptions
 - Get prescription details
 
-Business validations:
+Logic:
 - Prescription can only be created for completed appointments
 - Cancelled appointments cannot have prescriptions
 - Duplicate prescriptions for same appointment are blocked
@@ -156,12 +155,6 @@ app/
 | PUT | /appointments/{id} | Update appointment |
 | DELETE | /appointments/{id} | Cancel appointment |
 
-Pagination example:
-
-```text
-/appointments?page=1&limit=5
-```
-
 ---
 
 ## Prescription APIs
@@ -211,7 +204,7 @@ pip install -r requirements.txt
 
 ```env
 DATABASE_URL=sqlite:///./hospital.db
-SECRET_KEY=your_secret_key
+SECRET_KEY=enter_key
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=30
 ```
@@ -230,9 +223,8 @@ uvicorn app.main:app --reload
 
 Open:
 
-```text
-http://127.0.0.1:8000/docs
-```
+[Link Text](http://127.0.0.1:8000/docs)
+
 
 ---
 
