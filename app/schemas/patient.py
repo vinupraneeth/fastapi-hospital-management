@@ -1,9 +1,10 @@
 from pydantic import BaseModel, field_validator
 import re
-
+from pydantic import EmailStr
 
 class PatientCreate(BaseModel):
     name: str
+    email: EmailStr
     age: int
     phone: str
 
@@ -25,6 +26,7 @@ class PatientCreate(BaseModel):
 class PatientResponse(BaseModel):
     id: int
     name: str
+    email: EmailStr
     age: int
     phone: str
 

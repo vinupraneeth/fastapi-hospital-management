@@ -6,6 +6,9 @@ from app.models import doctor
 from app.routers import doctor_router
 from app.models import patient
 from app.models import association
+from app.models import appointment
+from app.models import prescription
+from app.routers import prescription_router
 
 # import model so SQLAlchemy knows it exists
 from app.models import test  
@@ -55,3 +58,15 @@ app.include_router(doctor_router.router)
 from app.routers import patient_router
 
 app.include_router(patient_router.router)
+
+
+#Appointtments Router
+from app.routers import appointment_router
+app.include_router(
+    appointment_router.router
+)
+
+#Prescription Router
+app.include_router(
+    prescription_router.router
+)
